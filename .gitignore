@@ -1,0 +1,3 @@
+# this files has all the file paths that you want to ignore while committing
+
+.classpath
