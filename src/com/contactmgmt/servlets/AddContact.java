@@ -13,20 +13,37 @@ import com.contactmgmt.domain.Contact;
 import com.contactmgmt.util.DatabaseConnection;
 
 public class AddContact extends HttpServlet {
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+
 		Contact contact = new Contact();
-		contact.setFirstName((String) request.getParameter("fName"));
-		out.println("Submitted contact");
+		contact.setFirstName(request.getParameter("fName"));
+		contact.setMiddleName(request.getParameter("mName"));
+		contact.setLastName(request.getParameter("lName"));
+		contact.setAge(Integer.parseInt(request.getParameter("age")));
+		contact.setGender(request.getParameter("gender"));
+		contact.setEmail(request.getParameter("email"));
+
 		Connection conn = DatabaseConnection.getConnection();
 		if (null != conn) {
 			String query = "INSERT INTO contact ( firstName, middleName, lastName,age, gender,email) "
-					+ "VALUES (\""
+					+ "VALUES ( \""
 					+ contact.getFirstName()
-					+ "\", \"\",\"\",0,\"\",\"\" )";
+					+ "\",\""
+					+ contact.getMiddleName()
+					+ "\",\""
+					+ contact.getLastName()
+					+ "\","
+					+ contact.getAge()
+					+ ",\""
+					+ contact.getGender()
+					+ "\",\""
+					+ contact.getEmail() + "\")";
 			DatabaseConnection dbconn = new DatabaseConnection();
 			dbconn.executeQuery(query);
+			out.println("Submitted contact");
 		}
 	}
 }

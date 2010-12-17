@@ -12,6 +12,7 @@
 	Middle Name:<input type="text" name="mName"/><br>
 	Last Name: <input type="text" name="lName"/><br>
 	Age: <input type="text" name="age"/><br>
+	Gender: <input type="text" name="gender"/> <br>
 	Email: <input type="text" name="email"/><br>
 	<input type="submit" value="Submit Contact"></input>
 </form>
