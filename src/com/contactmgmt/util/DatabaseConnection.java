@@ -2,20 +2,18 @@ package com.contactmgmt.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-
- public class DatabaseConnection {
+public class DatabaseConnection {
 	static Connection dbcon;
 
 	static public Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			dbcon = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/test", "", "");
+			if (null == dbcon)
+				dbcon = DriverManager.getConnection(
+						"jdbc:mysql://localhost:3306/test", "", "");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -23,12 +21,13 @@ import java.sql.Statement;
 		}
 		return dbcon;
 	}
-	public ResultSet executeQuery(String query){
+
+	public int executeQuery(String query) {
 		Statement stmt;
-		ResultSet rs = null;
+		int rs = 0;
 		try {
 			stmt = dbcon.createStatement();
-			rs = stmt.executeQuery(query);
+			rs = stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

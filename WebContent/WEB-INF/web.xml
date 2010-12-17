@@ -17,5 +17,4 @@
 		<url-pattern>/addContact</url-pattern>
 	</servlet-mapping>
 
-
 </web-app>

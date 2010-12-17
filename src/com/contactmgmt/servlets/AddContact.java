@@ -17,17 +17,16 @@ public class AddContact extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		Contact contact = new Contact();
-		contact.setFirstName((String) request.getAttribute("fName"));
+		contact.setFirstName((String) request.getParameter("fName"));
 		out.println("Submitted contact");
 		Connection conn = DatabaseConnection.getConnection();
-		if(null != conn){
-			String query = "INSERT INTO contact (id, firstName, middleName, lastName,age, gender,email) " +
-					"VALUES (1,"+ contact.getFirstName()+", \"\",\"\",0,\"\",\"\" )";
+		if (null != conn) {
+			String query = "INSERT INTO contact ( firstName, middleName, lastName,age, gender,email) "
+					+ "VALUES (\""
+					+ contact.getFirstName()
+					+ "\", \"\",\"\",0,\"\",\"\" )";
 			DatabaseConnection dbconn = new DatabaseConnection();
 			dbconn.executeQuery(query);
 		}
-//		RequestDispatcher dispatcher = getServletContext()
-//				.getRequestDispatcher("/AddContact.jsp");
-//		dispatcher.forward(request, response);
 	}
 }
