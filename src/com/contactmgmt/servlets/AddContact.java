@@ -1,9 +1,10 @@
 package com.contactmgmt.servlets;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,11 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.contactmgmt.domain.Contact;
-import com.contactmgmt.util.DatabaseConnection;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+
+import com.contactmgmt.domain.Contact;
+import com.contactmgmt.util.DatabaseConnection;
 
 public class AddContact extends HttpServlet {
 	private static Logger logger = null;
@@ -43,6 +44,7 @@ public class AddContact extends HttpServlet {
 		logger.info(contact.getFirstName());
 
 		Connection conn = DatabaseConnection.getConnection();
+		
 		if (null != conn) {
 			String query = "INSERT INTO contact ( firstName, middleName, lastName,age, gender,email) "
 					+ "VALUES ( \""
@@ -57,8 +59,15 @@ public class AddContact extends HttpServlet {
 					+ contact.getGender()
 					+ "\",\""
 					+ contact.getEmail() + "\")";
-			DatabaseConnection dbconn = new DatabaseConnection();
-			dbconn.executeQuery(query);
+			Statement stmt;
+			try {
+				stmt = conn.createStatement();
+				stmt.executeUpdate(query);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+//			DatabaseConnection dbconn = new DatabaseConnection();
+			//dbconn.executeQuery(query);
 			out.println("Submitted contact");
 			logger.info("record update successfully");
 		}

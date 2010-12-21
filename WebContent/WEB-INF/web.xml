@@ -13,9 +13,16 @@
 		<servlet-name>AddContact</servlet-name>
 		<servlet-class>com.contactmgmt.servlets.AddContact</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>SearchContact</servlet-name>
+		<servlet-class>com.contactmgmt.servlets.SearchContact</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddContact</servlet-name>
 		<url-pattern>/addContact</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>SearchContact</servlet-name>
+		<url-pattern>/searchContact</url-pattern>
+	</servlet-mapping>
 </web-app>
