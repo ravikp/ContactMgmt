@@ -14,7 +14,7 @@ color:green;
 </head>
 <body>
 
-<%List<Contact> arrContact =(List<Contact>)request.getAttribute("searchedcontacts");%>
+<%List<Contact> contactsList =(List<Contact>)request.getAttribute("searchedcontacts");%>
 <table>
 	<tr>
     	<th colspan="6" style="background-color:#7c2f97;">Search Results:</th>
@@ -28,17 +28,17 @@ color:green;
         <th class="border">Email</th>
        
     </tr>
-   <% for(Contact arrsearchcontact: arrContact)
+   <% for(Contact contact: contactsList)
     	 //for(int i = 0;i < arrName.size();i++)
     	{
     	%>
         <tr>
-        	<td><%= arrsearchcontact.getFirstName() %></td>
-            <td><%= arrsearchcontact.getMiddleName() %></td>
-            <td><%= arrsearchcontact.getLastName() %></td>
-            <td><%= arrsearchcontact.getAge() %></td>
-            <td><%= arrsearchcontact.getGender() %></td>
-            <td><%= arrsearchcontact.getEmail() %></td>
+        	<td><%= contact.getFirstName() %></td>
+            <td><%= contact.getMiddleName() %></td>
+            <td><%= contact.getLastName() %></td>
+            <td><%= contact.getAge() %></td>
+            <td><%= contact.getGender() %></td>
+            <td><%= contact.getEmail() %></td>
         </tr>
         <%}%>
 </table><br />
