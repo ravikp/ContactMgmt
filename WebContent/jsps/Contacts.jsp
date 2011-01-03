@@ -13,7 +13,7 @@
 	</tr>
 	<tr>
 		<td>
-		<form action="../searchContact" method="post" >
+		<form action="searchContact" method="post" >
 		First Name: <input type="text" name="fName" /><br>
 		Email Id: <input type="text" name="email" /><br>
 		<input type="submit" name="Submit" value="Search Contact"></form>
