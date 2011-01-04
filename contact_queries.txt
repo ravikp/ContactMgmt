@@ -7,3 +7,8 @@ CREATE TABLE contact (
           gender VARCHAR(10),
           email VARCHAR(100)
         );
+
+CREATE TABLE user (
+          userName VARCHAR(20),
+          passWord VARCHAR(20)
+         );

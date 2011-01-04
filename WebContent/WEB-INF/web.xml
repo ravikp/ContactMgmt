@@ -6,7 +6,7 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>SampleWeb</display-name>
 	<welcome-file-list>
-		<welcome-file>jsps/Contacts.jsp</welcome-file>
+		<welcome-file>jsps/Login.jsp</welcome-file>
 	</welcome-file-list>
 
 	<servlet>
@@ -17,6 +17,14 @@
 		<servlet-name>SearchContact</servlet-name>
 		<servlet-class>com.contactmgmt.servlets.SearchContact</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Login</display-name>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>
+		com.contactmgmt.servlets.Login</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddContact</servlet-name>
 		<url-pattern>/addContact</url-pattern>
@@ -25,4 +33,9 @@
 		<servlet-name>SearchContact</servlet-name>
 		<url-pattern>/searchContact</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
