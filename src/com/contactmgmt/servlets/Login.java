@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -39,24 +38,48 @@ public class Login extends HttpServlet {
 		/**
 		 * Setting up cookies
 		 */
-		Date now = new Date();
-		String timestamp = now.toString();
+		if (("on").equalsIgnoreCase(request.getParameter("remindMe"))) {
+			// Date now = new Date();
+			// String timestamp = now.toString();
 
-		Cookie userName = new Cookie("username", request.getParameter("uName"));
-		Cookie password = new Cookie("password", request.getParameter("pwd"));
+			Cookie userName = new Cookie("username", request
+					.getParameter("uName"));
+			// Cookie password = new Cookie("password", request
+			// .getParameter("pwd"));
 
-		// Set expiry date after 24 Hrs for both the cookies.
-		userName.setMaxAge(60 * 60 * 24 * 2);
-		password.setMaxAge(60 * 60 * 24 * 2);
+			// Set expiry date after 24 Hrs for both the cookies.
+			userName.setMaxAge(60 * 60 * 24 * 2);
+			// password.setMaxAge(60 * 60 * 24 * 2);
 
-		// Add both the cookies in the response header.
-		response.addCookie(userName);
-		response.addCookie(password);
+			// Add both the cookies in the response header.
+			response.addCookie(userName);
+			// response.addCookie(password);
+		} else {
+			Cookie cookie = null;
+			Cookie[] cookies = null;
+			// Get an array of Cookies associated with this domain
+			cookies = request.getCookies();
+			if (cookies != null) {
+				for (int i = 0; i < cookies.length; i++) {
+					cookie = cookies[i];
+					if (("username".equals("cookie.getName()"))) {
+						cookie.setMaxAge(0);
+					}
+					Cookie userName = new Cookie("username", request
+							.getParameter("uName"));
+					userName.setMaxAge(60 * 60 * 24 * 2);
+
+					response.addCookie(userName);
+				}
+			}
+		}
 		User user = new User();
 		user.setUserName(request.getParameter("uName"));
 		user.setPassword(request.getParameter("pwd"));
 		// System.out.println("SearchContact doPost Entry");
-
+		/**
+		 * Getting form details & redirecting to corresponding page
+		 */
 		if (!user.getUserName().equals("") && !user.getPassword().equals("")) {
 
 			Connection conn = DatabaseConnection.getConnection();

@@ -14,11 +14,12 @@
 		<form action="login" method="post" >
 		User Name: <input type="text" name="uName" /><br/>
 		Password: <input type="password" name="pwd" /><br/>
-		<input type="checkbox" name="remind me" value="remind"/>Remind me
+		<input type="checkbox" name="remindMe" value="on"/>Remind me
 		<input type="submit" name="Submit" value="Login">
 		</form>
 		</td>
 	</tr>
 </table>
+
 </body>
 </html>

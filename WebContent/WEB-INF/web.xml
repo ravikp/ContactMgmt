@@ -25,6 +25,14 @@
 		<servlet-class>
 		com.contactmgmt.servlets.Login</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>CookieTest</display-name>
+		<servlet-name>CookieTest</servlet-name>
+		<servlet-class>
+		com.contactmgmt.servlets.CookieTest</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddContact</servlet-name>
 		<url-pattern>/addContact</url-pattern>
@@ -36,6 +44,10 @@
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CookieTest</servlet-name>
+		<url-pattern>/CookieTest</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
