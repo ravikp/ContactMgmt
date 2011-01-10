@@ -37,11 +37,14 @@ public class CookieTest extends HttpServlet {
 		if (cookies != null) {
 			for (int i = 0; i < cookies.length; i++) {
 				cookie = cookies[i];
-				if (("username".equals("cookie.getName()"))) {
+				if (("username".equals(cookie.getName()))) {
 					response.sendRedirect("jsps/Contacts.jsp");
+					break;
 				} else
 					response.sendRedirect("jsps/Login.jsp");
+					break;
 			}
-		}
+		} else
+			response.sendRedirect("jsps/Login.jsp");
 	}
 }

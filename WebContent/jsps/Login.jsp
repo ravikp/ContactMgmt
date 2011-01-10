@@ -11,7 +11,7 @@
 <table>
 	<tr>
 		<td>
-		<form action="login" method="post" >
+		<form action="../login" method="post" >
 		User Name: <input type="text" name="uName" /><br/>
 		Password: <input type="password" name="pwd" /><br/>
 		<input type="checkbox" name="remindMe" value="on"/>Remind me
